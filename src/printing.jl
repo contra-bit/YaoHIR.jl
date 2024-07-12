@@ -63,3 +63,11 @@ function Base.show(io::IO, ::MIME"text/plain", g::Chain)
     print(io, ")")
 end
 
+function Base.show(io::IO, x::IRCode)
+  if x.stmts.stmt[1] isa Core.ReturnNode
+     printstyled(io, nothing)
+  else
+    printstyled(io, x)
+  end
+end
+
